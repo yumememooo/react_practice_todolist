@@ -18,6 +18,8 @@ import DeleteSweepIcon from "@material-ui/icons/DeleteSweep";
 export default function BasicTextFields(props) {
   const classes = useStyles();
   const [TaskName, setTaskName] = useState("");
+  const [SelectData, setSelectData] = useState(getToday());
+
   const [Type, setType] = useState("");
   const [Pri, setPri] = useState(0);
   const [TaskNamelen, setTaskNamelen] = useState(0);
@@ -38,6 +40,10 @@ export default function BasicTextFields(props) {
         setErrorText("");
       }
       setTaskNamelen(len);
+    }
+    if (fieldName === "SelectData") {
+      setSelectData(value);
+      console.log(value);
     }
   };
 
@@ -62,7 +68,9 @@ export default function BasicTextFields(props) {
     //   createData(TaskName, Pri, 3.7, Type, 4.3),
     // ]);
 
-    props.addOneData(createData(TaskName, Pri, statusList.Open, Type, 4.3));
+    props.addOneData(
+      createData(TaskName, Pri, statusList.Open, Type, SelectData)
+    );
     //TODO
     event.preventDefault();
   };
@@ -125,7 +133,9 @@ export default function BasicTextFields(props) {
               label="開始日 Date"
               type="date"
               defaultValue={getToday()}
+              label="SelectData"
               className={classes.textField}
+              onChange={(e) => handleChangeValue(e, "SelectData")}
               InputLabelProps={{
                 shrink: true,
               }}

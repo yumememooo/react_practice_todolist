@@ -6,15 +6,15 @@ import * as R from "ramda";
 import Container from "@material-ui/core/Container";
 
 const defaultRows = [
-  createData("寫一篇部落格 for go", 1, statusList.Open, "blog", 4.3),
-  createData("寫一篇Go ", 2, statusList.InProgress, "go", 4.9),
-  createData("寫一篇初始化go", 1, statusList.Open, "go", 6.0),
-  createData("練習前端table改寫", 2, statusList.Open, "life", 4.0),
-  createData("練習前端tab改寫", 1, statusList.Open, "", 3.9),
-  createData("練習前端格式改寫", 2, statusList.Open, "", 6.5),
-  createData("前端格式整理", 3, statusList.Open, "", 4.3),
-  createData("寫一篇部落格 for 前端", 3, statusList.Done, "", 0.0),
-  createData("寫一篇部落格 for 工具", 2, statusList.Open, "", 7.0),
+  createData("寫一篇部落格 for go", 1, statusList.Open, "blog", "2021-01-31"),
+  createData("寫一篇Go ", 2, statusList.InProgress, "go", "2021-01-31"),
+  createData("寫一篇初始化go", 1, statusList.Open, "go", "2021-01-31"),
+  createData("練習前端table改寫", 2, statusList.Open, "life", "2021-01-31"),
+  createData("練習前端tab改寫", 1, statusList.Open, "", "2021-01-31"),
+  createData("練習前端格式改寫", 2, statusList.Open, "", "2021-01-31"),
+  createData("前端格式整理", 3, statusList.Open, "", "2021-01-31"),
+  createData("寫一篇部落格 for 前端", 3, statusList.Done, "", "2021-01-31"),
+  createData("寫一篇部落格 for 工具", 2, statusList.Open, "", "2021-01-31"),
 ];
 
 export default function TaskMain() {
