@@ -1,0 +1,20 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+#textArea {
+  color: rgb(245, 181, 61);
+}
+
+.content-app {
+  border: 1px red solid;
+}
+
+.content-bady {
+  border: 1px blue solid;
+}
+
+.c-chgData {
+  border: 1px rgb(150, 150, 199) solid;
+}
