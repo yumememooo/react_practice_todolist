@@ -9,8 +9,10 @@ npm start
 1.learn 'react lifeCycle'
 componentDidMount/componentWillUnmount/componentDidUpdate sample
 
-2. React ison
+2.material-ui/icon
 ```
-npm install react-icons --save
+- Icon API
+https://material-ui.com/zh/api/icon/
+
 ```
 

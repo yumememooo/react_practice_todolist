@@ -1,50 +1,57 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef } from "react";
 
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
-import AddIcon from '@material-ui/icons/Add';
-import { createData } from './helper';
-import Input from '@material-ui/core/Input';
-import { InputAdornment, InputLabel } from '@material-ui/core';
-import FormControl from '@material-ui/core/FormControl';
-/** @jsx jsx */ import { css, jsx } from '@emotion/core';
+import AddIcon from "@material-ui/icons/Add";
+import { createData } from "./helper";
+import Input from "@material-ui/core/Input";
+import { InputAdornment, InputLabel } from "@material-ui/core";
+import FormControl from "@material-ui/core/FormControl";
+/** @jsx jsx */ import { css, jsx } from "@emotion/core";
 
-import InputSuggest from './InputSuggest';
-import { getToday } from './helper';
-import { useStyles, ErrorLabel, myStyle } from './Style/InputBar_Style';
-import { statusList } from './helper';
+import InputSuggest from "./InputSuggest";
+import { getToday } from "./helper";
+import { useStyles, ErrorLabel, myStyle } from "./Style/InputBar_Style";
+import { statusList } from "./helper";
+import DeleteSweepIcon from "@material-ui/icons/DeleteSweep";
 export default function BasicTextFields(props) {
   const classes = useStyles();
-  const [TaskName, setTaskName] = useState('');
-  const [Type, setType] = useState('');
+  const [TaskName, setTaskName] = useState("");
+  const [Type, setType] = useState("");
   const [Pri, setPri] = useState(0);
   const [TaskNamelen, setTaskNamelen] = useState(0);
   const [isValidName, setIsValidName] = useState(true);
-  const [errorText, setErrorText] = useState('');
+  const [errorText, setErrorText] = useState("");
 
   const handleChangeValue = (e, fieldName) => {
     const { value } = e.target;
     console.log(value);
-    if (fieldName === 'TaskName') {
+    if (fieldName === "TaskName") {
       setTaskName(value);
       const len = [...value].length;
       if (TaskNamelen > 10) {
         setIsValidName(false);
-        setErrorText('text length too long.');
+        setErrorText("text length too long.");
       } else {
         setIsValidName(true);
-        setErrorText('');
+        setErrorText("");
       }
       setTaskNamelen(len);
     }
   };
+
+  // 清空資料
+  const handleClean = (event) => {
+    console.log("clean data");
+    props.cleanData();
+  };
   const handleSubmit = (event) => {
     // TODO 判斷是否重複
-    if (TaskName === '') {
+    if (TaskName === "") {
     }
-    console.log('type' + Type);
-    console.log('Pri' + Pri);
+    console.log("type" + Type);
+    console.log("Pri" + Pri);
     //https://stackoverflow.com/questions/57918784/javascript-react-push-to-an-array-in-usestate
     // props.data.push( createData(task, 305, 3.7, 67, 4.3))
     // props.changefunc(props.data)
@@ -85,7 +92,7 @@ export default function BasicTextFields(props) {
               label="TaskName"
               // helperText={isOK ? "" : "text length too long."} not
               // value={task}
-              onChange={(e) => handleChangeValue(e, 'TaskName')}
+              onChange={(e) => handleChangeValue(e, "TaskName")}
               endAdornment={
                 <InputAdornment position="end">{`${TaskNamelen}/10`}</InputAdornment>
               }
@@ -99,7 +106,7 @@ export default function BasicTextFields(props) {
             <InputSuggest
               wd="300"
               defaultValue="優先度 pri."
-              options={['1', '2', '3']}
+              options={["1", "2", "3"]}
               func={handlePriChange}
             />
             <ErrorLabel></ErrorLabel>
@@ -107,7 +114,7 @@ export default function BasicTextFields(props) {
           <FormControl className={classes.formControl} variant="outlined">
             <InputSuggest
               defaultValue="類型 Type"
-              options={['life', 'blog', 'front-web', 'go', 'design', 'others']}
+              options={["life", "blog", "front-web", "go", "design", "others"]}
               func={handleTypeChange}
             />
             <ErrorLabel></ErrorLabel>
@@ -134,6 +141,17 @@ export default function BasicTextFields(props) {
             onClick={handleSubmit}
           >
             新增
+          </Button>
+
+          <Button
+            variant="contained"
+            color="secondary"
+            className={classes.button}
+            endIcon={<DeleteSweepIcon />}
+            // type="submit"
+            onClick={handleClean}
+          >
+            清空資料
           </Button>
         </div>
       </form>
