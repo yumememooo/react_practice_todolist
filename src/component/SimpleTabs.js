@@ -1,15 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import EnhancedTable from './EnhancedTable';
-import { statusList } from './helper';
-import * as R from 'ramda';
-import { useStyles } from './Style/SimpleTabs_Style';
-
+import React from "react";
+import PropTypes from "prop-types";
+import AppBar from "@material-ui/core/AppBar";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
+import EnhancedTable from "./EnhancedTable";
+import { statusList } from "./helper";
+import * as R from "ramda";
+import { useStyles } from "./Style/SimpleTabs_Style";
+import AppsIcon from "@material-ui/icons/Apps";
+import DoneOutlineIcon from "@material-ui/icons/DoneOutline";
+import DoubleArrowIcon from "@material-ui/icons/DoubleArrow";
+import CropFreeIcon from "@material-ui/icons/CropFree";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -39,7 +42,7 @@ TabPanel.propTypes = {
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
   };
 }
 
@@ -61,10 +64,19 @@ export default function SimpleTabs(props) {
           aria-label="simple tabs example"
           centered
         >
-          <Tab label="全部 ALL" {...a11yProps(0)} />
-          <Tab label="未進行 OPEN" {...a11yProps(1)} />
-          <Tab label="進行中 IN PROGRESS" {...a11yProps(2)} />
-          <Tab label="已完成 DONE" {...a11yProps(3)} />
+          <Tab label="全部 ALL" icon={<AppsIcon />} {...a11yProps(0)} />
+          <Tab label="未進行 OPEN" icon={<CropFreeIcon />} {...a11yProps(1)} />
+          <Tab
+            label=" 進行中 IN PROGRESS"
+            icon={<DoubleArrowIcon />}
+            {...a11yProps(2)}
+          />
+
+          <Tab
+            label="已完成 DONE"
+            icon={<DoneOutlineIcon />}
+            {...a11yProps(3)}
+          />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -79,7 +91,7 @@ export default function SimpleTabs(props) {
       <TabPanel value={value} index={1}>
         Item Two
         <EnhancedTable
-          data={R.filter(R.propEq('status', statusList.Open), props.data)}
+          data={R.filter(R.propEq("status", statusList.Open), props.data)}
           alldata={props.data}
           changefunc={props.changefunc}
         />
@@ -87,7 +99,7 @@ export default function SimpleTabs(props) {
       <TabPanel value={value} index={2}>
         Item Three
         <EnhancedTable
-          data={R.filter(R.propEq('status', statusList.InProgress), props.data)}
+          data={R.filter(R.propEq("status", statusList.InProgress), props.data)}
           alldata={props.data}
           changefunc={props.changefunc}
         />
@@ -95,7 +107,7 @@ export default function SimpleTabs(props) {
       <TabPanel value={value} index={3}>
         Item Four
         <EnhancedTable
-          data={R.filter(R.propEq('status', statusList.Done), props.data)}
+          data={R.filter(R.propEq("status", statusList.Done), props.data)}
           alldata={props.data}
           changefunc={props.changefunc}
         />
