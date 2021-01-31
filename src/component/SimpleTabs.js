@@ -64,6 +64,7 @@ export default function SimpleTabs(props) {
           aria-label="simple tabs example"
           centered
         >
+         
           <Tab label="全部 ALL" icon={<AppsIcon />} {...a11yProps(0)} />
           <Tab label="未進行 OPEN" icon={<CropFreeIcon />} {...a11yProps(1)} />
           <Tab

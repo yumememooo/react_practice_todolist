@@ -367,28 +367,35 @@ export default function EnhancedTable(props) {
                       <TableCell align="right">{row.date}</TableCell>
                       <TableCell align="right">
                         <IconButton
-                          color="primary"
+                          color={
+                            row.status != statusList.Open ? "primary" : "error"
+                          }
                           aria-label="Open icon"
                           onClick={(event) => handleOpenClick(event, row.name)}
                         >
                           <CropFreeRoundedIcon />
                         </IconButton>
+
+                        {/* 進度開關進度開關 */}
+
                         <IconButton
-                          color="primary"
+                          color={
+                            row.status != statusList.InProgress
+                              ? "primary"
+                              : "error"
+                          }
                           aria-label="Edit icon"
                           onClick={(event) => handleEditClick(event, row.name)}
                         >
                           <DoubleArrowRoundedIcon />
                         </IconButton>
+
                         <IconButton
-                          color="primary"
+                          color={row.status != statusList.Done ? "primary" : ""}
                           aria-label="Next icon"
                           onClick={(event) => handleDoneClick(event, row.name)}
                         >
-                          <DoneOutlineRoundedIcon
-                            color="primary"
-                            fontSize="small"
-                          />
+                          <DoneOutlineRoundedIcon />
                         </IconButton>
                       </TableCell>
                     </TableRow>
